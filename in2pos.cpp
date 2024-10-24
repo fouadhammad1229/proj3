@@ -1,10 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <stack>
-#include <cctype>
 #include <string>
-#include <map>
-#include <cstdlib>
 #include <vector>
 
 using namespace std;
