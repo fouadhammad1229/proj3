@@ -4,21 +4,27 @@
 #include "stack.h"
 
 namespace cop4530 {
-
+    
+    // Constructor
     template <typename T>
     Stack<T>::Stack() {}
 
+    // Destructor
     template <typename T>
     Stack<T>::~Stack() {
         clear();
     }
-
+    
+    // Copy Constructor
     template <typename T>
     Stack<T>::Stack(const Stack<T>& other) : data(other.data) {}
 
+    // Move Constructor
     template <typename T>
     Stack<T>::Stack(Stack<T>&& other) : data(std::move(other.data)) {}
 
+
+    // Copy Assignment Operator
     template <typename T>
     Stack<T>& Stack<T>::operator=(const Stack<T>& other) {
         if (this != &other) {
@@ -27,6 +33,7 @@ namespace cop4530 {
         return *this;
     }
 
+    // Move Assignment Operator
     template <typename T>
     Stack<T>& Stack<T>::operator=(Stack<T>&& other) {
         if (this != &other) {
@@ -35,26 +42,31 @@ namespace cop4530 {
         return *this;
     }
 
+    // Empty Checker
     template <typename T>
     bool Stack<T>::empty() const {
         return data.empty();
     }
 
+    // Clear the stack
     template <typename T>
     void Stack<T>::clear() {
         data.clear();
     }
 
+    // Push stack (copy)
     template <typename T>
     void Stack<T>::push(const T& x) {
         data.push_back(x);
     }
 
+    // Push Stack (move)
     template <typename T>
     void Stack<T>::push(T&& x) {
         data.push_back(std::move(x));
     }
 
+    // Pop top element
     template <typename T>
     void Stack<T>::pop() {
         if (!empty()) {
@@ -62,16 +74,19 @@ namespace cop4530 {
         }
     }
 
+    // Access top element (mutable)
     template <typename T>
     T& Stack<T>::top() {
         return data.back();
     }
 
+    // Access top element (constant)
     template <typename T>
     const T& Stack<T>::top() const {
         return data.back();
     }
 
+    // Gets stack size
     template <typename T>
     int Stack<T>::size() const {
         return data.size();
@@ -84,11 +99,16 @@ namespace cop4530 {
         }
     }
 
+    // Prints stack
     template <typename T>
     std::ostream& operator<<(std::ostream& os, const Stack<T>& a) {
         a.print(os);
         return os;
     }
+
+/*
+ * Comparison Operators
+ */
 
     template <typename T>
     bool operator==(const Stack<T>& a, const Stack<T>& b) {
